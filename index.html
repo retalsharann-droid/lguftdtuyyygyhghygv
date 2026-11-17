@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0EA5E9">
+<title>عالم الأشكال — مغامرة تعليمية ممتعة</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#0EA5E9; --sky-dark:#0284C7; --sky-light:#E0F2FE;
+    --green:#10B981; --green-dark:#047857; --green-light:#D1FAE5;
+    --yellow:#F59E0B; --yellow-dark:#B45309; --yellow-light:#FEF3C7;
+    --pink:#EC4899; --purple:#8B5CF6; --red:#EF4444;
+    --bg:#F0F9FF; --card:#FFFFFF; --text:#0F172A; --muted:#64748B;
+    --shadow-sm:0 1px 3px rgba(15,23,42,.08);
+    --shadow-md:0 4px 16px rgba(15,23,42,.10);
+    --shadow-lg:0 12px 32px rgba(15,23,42,.14);
+    --shadow-xl:0 20px 50px rgba(15,23,42,.18);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Tajawal',system-ui,sans-serif;
+    background:var(--bg); color:var(--text);
+    min-height:100vh; overflow-x:hidden;
+    user-select:none; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Baloo Bhaijaan 2','Tajawal',sans-serif;}
+  body.night{--bg:#0F172A;--card:#1E293B;--text:#F1F5F9;--muted:#94A3B8;background:#0F172A;}
+  body.night .bg-white,body.night .bg-white\/95{background:#1E293B!important;}
+  body.night .text-slate-800,body.night .text-slate-700,body.night .text-slate-900{color:#F1F5F9!important;}
+  body.night .border-slate-200{border-color:#334155!important;}
+  body.night .bg-slate-100{background:#334155!important;color:#F1F5F9!important;}
+  body.calm *{animation:none!important;transition:none!important;}
+  body.calm{background:#F5F3EE!important;}
+  body.calm .decor{display:none!important;}
+
+  .btn-tactile{
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease;
+    box-shadow:0 5px 0 rgba(15,23,42,.18), var(--shadow-md);
+  }
+  .btn-tactile:hover{transform:translateY(-3px);}
+  .btn-tactile:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(15,23,42,.18);}
+  .btn-tactile:focus-visible{outline:3px solid var(--sky);outline-offset:4px;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .fade-up{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) both;}
+  @keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.1);opacity:1}100%{transform:scale(1)}}
+  .pop{animation:pop .5s cubic-bezier(.34,1.56,.64,1) both;}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-4px)}}
+  .shake{animation:shake .4s ease-in-out;}
+  @keyframes pulse-glow{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(245,158,11,.7)}50%{transform:scale(1.06);box-shadow:0 0 0 20px rgba(245,158,11,0)}}
+  .pulse-glow{animation:pulse-glow 1.8s infinite;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .float{animation:float 3s ease-in-out infinite;}
+  @keyframes spin-slow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .spin-slow{animation:spin-slow 60s linear infinite;}
+  @keyframes sun-rise{0%{transform:translateY(30px)}100%{transform:translateY(0)}}
+  .sun-rise{animation:sun-rise 1.2s ease-out;}
+  @keyframes cloud-float{0%{transform:translateX(0)}100%{transform:translateX(-30px)}}
+  .cloud-float{animation:cloud-float 6s ease-in-out infinite alternate;}
+  @keyframes kid-jump{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(2deg)}}
+  .kid-jump{animation:kid-jump 1.4s ease-in-out infinite;}
+  @keyframes kid-wave{0%,100%{transform:rotate(0)}50%{transform:rotate(-8deg)}}
+  .kid-wave{animation:kid-wave 1.8s ease-in-out infinite; transform-origin:bottom center;}
+  @keyframes ball-bounce{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-25px) rotate(180deg)}}
+  .ball-bounce{animation:ball-bounce 2s ease-in-out infinite;}
+  @keyframes butterfly{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(15px,-10px) rotate(5deg)}50%{transform:translate(-10px,-20px) rotate(-5deg)}75%{transform:translate(-15px,-5px) rotate(3deg)}}
+  .butterfly{animation:butterfly 4s ease-in-out infinite;}
+  @keyframes balloon-rise{0%{transform:translateY(0)}100%{transform:translateY(-15px)}}
+  .balloon{animation:balloon-rise 3s ease-in-out infinite alternate;}
+  @keyframes checkMark{0%{transform:scale(0) rotate(-45deg);opacity:0}60%{transform:scale(1.3) rotate(10deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+  .check-mark{animation:checkMark .7s cubic-bezier(.34,1.56,.64,1) forwards;}
+  @keyframes star-burst{0%{transform:scale(0) rotate(0);opacity:0}50%{transform:scale(1.3) rotate(180deg);opacity:1}100%{transform:scale(1) rotate(360deg);opacity:1}}
+  .star-burst{animation:star-burst .8s cubic-bezier(.34,1.56,.64,1) forwards;}
+  @keyframes ring-out{0%{transform:scale(.5);opacity:1}100%{transform:scale(2.5);opacity:0}}
+  .ring-out{animation:ring-out 1s ease-out forwards;}
+
+  #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
+  .decor{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+
+  .progress-rail{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;}
+  .progress-dot{
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:13px;border:3px solid #E2E8F0;
+    background:#F8FAFC;color:#94A3B8;transition:all .3s ease;
+  }
+  .progress-dot.active{background:var(--yellow-light);border-color:var(--yellow);color:var(--yellow-dark);transform:scale(1.15);box-shadow:0 0 0 4px rgba(245,158,11,.2);}
+  .progress-dot.done{background:var(--green-light);border-color:var(--green);color:var(--green-dark);}
+  .progress-dot.done::before{content:"✓";font-size:16px;}
+
+  .trace-svg{cursor:crosshair;touch-action:none;width:100%;max-width:420px;height:auto;}
+  .trace-path{fill:none;stroke:#E2E8F0;stroke-width:22;stroke-linecap:round;stroke-linejoin:round;}
+  .trace-progress{fill:none;stroke:url(#traceGradient);stroke-width:22;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset .08s linear;filter:drop-shadow(0 0 6px rgba(14,165,233,.4));}
+
+  .cover-dot{cursor:pointer;transition:transform .25s,opacity .4s;}
+  .cover-dot:hover,.cover-dot:focus{transform:scale(1.2);outline:none;}
+  .cover-dot.covered{opacity:.1;pointer-events:none;transform:scale(.4) rotate(180deg);}
+
+  .connect-item{
+    position:relative;z-index:2;cursor:pointer;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .connect-item:hover{transform:scale(1.06);}
+  .connect-item.selected{
+    box-shadow:0 0 0 6px rgba(14,165,233,.5), 0 8px 20px rgba(14,165,233,.3);
+    transform:scale(1.08);
+  }
+  .connect-item.matched{
+    opacity:.5;pointer-events:none;
+    box-shadow:0 0 0 4px rgba(16,185,129,.6);
+  }
+  .connect-item.matched::after{
+    content:"✓";position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#10B981;font-size:3rem;font-weight:900;
+    background:rgba(16,185,129,.15);border-radius:1rem;
+    z-index:3;
+  }
+
+  /* بطاقة الشكل الكرتونية */
+  .shape-card{
+    background:white;
+    border-radius:2rem;
+    padding:1rem;
+    transition:all .3s;
+    box-shadow:var(--shadow-md);
+  }
+  .shape-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+
+  /* زر البدء الكبير */
+  .start-btn{
+    background:linear-gradient(135deg,#FCD34D 0%,#F59E0B 50%,#EA580C 100%);
+    box-shadow:0 10px 0 #92400E, 0 15px 40px rgba(245,158,11,.5);
+    transition:all .2s;
+    border:4px solid white;
+  }
+  .start-btn:hover{transform:translateY(-3px);box-shadow:0 13px 0 #92400E, 0 20px 50px rgba(245,158,11,.6);}
+  .start-btn:active{transform:translateY(7px);box-shadow:0 3px 0 #92400E, 0 8px 20px rgba(245,158,11,.5);}
+
+  /* خلفية مشهد المدينة */
+  .city-bg{
+    background:linear-gradient(180deg,#87CEEB 0%,#B0E0E6 40%,#FFE4B5 70%,#F0E68C 100%);
+  }
+
+  /* نقاط النجوم */
+  .star-point{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:28px;height:28px;
+    filter:drop-shadow(0 2px 3px rgba(245,158,11,.4));
+  }
+
+  /* شهادة */
+  .certificate-bg{
+    background:linear-gradient(135deg,#FFF8E1 0%,#FFECB3 50%,#FFF8E1 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .certificate-bg::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%,rgba(245,158,11,.1) 0%,transparent 40%),
+      radial-gradient(circle at 80% 70%,rgba(14,165,233,.1) 0%,transparent 40%);
+    pointer-events:none;
+  }
+
+  @media print{
+    body *{visibility:hidden;}
+    #print-area,#print-area *{visibility:visible;}
+    #print-area{position:fixed;top:0;left:0;width:100%;}
+    .no-print{display:none!important;}
+  }
+
+  /* شريط التقدم العلوي */
+  .top-progress{
+    background:linear-gradient(90deg,#0EA5E9,#10B981);
+    height:6px;
+    border-radius:3px;
+    transition:width .5s ease;
+  }
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<canvas id="confetti"></canvas>
+
+<!-- ============================================================
+     شاشة البدء الأسطورية
+     ============================================================ -->
+<div id="start-screen" class="fixed inset-0 z-50 overflow-hidden city-bg">
+
+  <!-- الشمس -->
+  <div class="absolute top-8 right-10 md:top-12 md:right-20 w-32 h-32 md:w-44 md:h-44 sun-rise">
+    <svg viewBox="0 0 200 200" class="w-full h-full spin-slow">
+      <defs>
+        <radialGradient id="sunGrad">
+          <stop offset="0%" stop-color="#FEF08A"/>
+          <stop offset="70%" stop-color="#FBBF24"/>
+          <stop offset="100%" stop-color="#F59E0B"/>
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="60" fill="url(#sunGrad)" stroke="#D97706" stroke-width="3"/>
+      <g stroke="#F59E0B" stroke-width="6" stroke-linecap="round">
+        <line x1="100" y1="5" x2="100" y2="25"/>
+        <line x1="100" y1="175" x2="100" y2="195"/>
+        <line x1="5" y1="100" x2="25" y2="100"/>
+        <line x1="175" y1="100" x2="195" y2="100"/>
+        <line x1="35" y1="35" x2="49" y2="49"/>
+        <line x1="151" y1="151" x2="165" y2="165"/>
+        <line x1="165" y1="35" x2="151" y2="49"/>
+        <line x1="49" y1="151" x2="35" y2="165"/>
+      </g>
+      <circle cx="80" cy="90" r="7" fill="#1E293B"/>
+      <circle cx="120" cy="90" r="7" fill="#1E293B"/>
+      <circle cx="77" cy="87" r="2.5" fill="#FFFFFF"/>
+      <circle cx="117" cy="87" r="2.5" fill="#FFFFFF"/>
+      <ellipse cx="65" cy="108" rx="9" ry="6" fill="#FB7185" opacity=".7"/>
+      <ellipse cx="135" cy="108" rx="9" ry="6" fill="#FB7185" opacity=".7"/>
+      <path d="M80 115 Q100 135 120 115" stroke="#1E293B" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- سحب -->
+  <div class="absolute top-16 left-0 cloud-float opacity-95">
+    <svg width="180" height="80" viewBox="0 0 180 80"><path d="M35 70 L145 70 A25 25 0 0 0 145 20 A35 35 0 0 0 85 8 A30 30 0 0 0 40 22 A22 22 0 0 0 35 70 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="absolute top-40 left-32 cloud-float opacity-85" style="animation-delay:2s">
+    <svg width="130" height="60" viewBox="0 0 130 60"><path d="M25 50 L105 50 A20 20 0 0 0 105 15 A28 28 0 0 0 65 5 A22 22 0 0 0 30 18 A18 18 0 0 0 25 50 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="absolute top-24 right-1/3 cloud-float opacity-90" style="animation-delay:1s">
+    <svg width="110" height="50" viewBox="0 0 110 50"><path d="M20 40 L90 40 A15 15 0 0 0 90 12 A22 22 0 0 0 55 3 A18 18 0 0 0 25 14 A15 15 0 0 0 20 40 Z" fill="#FFFFFF"/></svg>
+  </div>
+
+  <!-- بالونات -->
+  <div class="absolute top-1/4 left-10 balloon" style="animation-delay:0.3s">
+    <svg width="45" height="80" viewBox="0 0 45 80">
+      <ellipse cx="22" cy="25" rx="20" ry="24" fill="#EF4444"/>
+      <ellipse cx="16" cy="20" rx="6" ry="8" fill="rgba(255,255,255,.4)"/>
+      <path d="M22 49 L20 60 L24 60 Z" fill="#991B1B"/>
+      <path d="M22 60 Q20 70 24 80" stroke="#991B1B" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="absolute top-1/3 right-12 balloon" style="animation-delay:0.8s">
+    <svg width="45" height="80" viewBox="0 0 45 80">
+      <ellipse cx="22" cy="25" rx="20" ry="24" fill="#3B82F6"/>
+      <ellipse cx="16" cy="20" rx="6" ry="8" fill="rgba(255,255,255,.4)"/>
+      <path d="M22 49 L20 60 L24 60 Z" fill="#1E3A8A"/>
+      <path d="M22 60 Q20 70 24 80" stroke="#1E3A8A" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="absolute top-20 right-1/4 balloon" style="animation-delay:1.5s">
+    <svg width="40" height="70" viewBox="0 0 45 80">
+      <ellipse cx="22" cy="25" rx="20" ry="24" fill="#10B981"/>
+      <ellipse cx="16" cy="20" rx="6" ry="8" fill="rgba(255,255,255,.4)"/>
+      <path d="M22 49 L20 60 L24 60 Z" fill="#065F46"/>
+      <path d="M22 60 Q20 70 24 80" stroke="#065F46" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- فراشات -->
+  <div class="absolute top-1/3 left-1/3 butterfly">
+    <svg width="35" height="35" viewBox="0 0 40 40">
+      <ellipse cx="15" cy="15" rx="10" ry="8" fill="#F472B6" transform="rotate(-30 15 15)"/>
+      <ellipse cx="25" cy="15" rx="10" ry="8" fill="#F472B6" transform="rotate(30 25 15)"/>
+      <ellipse cx="15" cy="25" rx="8" ry="6" fill="#EC4899" transform="rotate(30 15 25)"/>
+      <ellipse cx="25" cy="25" rx="8" ry="6" fill="#EC4899" transform="rotate(-30 25 25)"/>
+      <ellipse cx="20" cy="20" rx="2" ry="9" fill="#1E293B"/>
+    </svg>
+  </div>
+  <div class="absolute top-2/3 right-1/4 butterfly" style="animation-delay:2s">
+    <svg width="30" height="30" viewBox="0 0 40 40">
+      <ellipse cx="15" cy="15" rx="10" ry="8" fill="#A78BFA" transform="rotate(-30 15 15)"/>
+      <ellipse cx="25" cy="15" rx="10" ry="8" fill="#A78BFA" transform="rotate(30 25 15)"/>
+      <ellipse cx="15" cy="25" rx="8" ry="6" fill="#8B5CF6" transform="rotate(30 15 25)"/>
+      <ellipse cx="25" cy="25" rx="8" ry="6" fill="#8B5CF6" transform="rotate(-30 25 25)"/>
+      <ellipse cx="20" cy="20" rx="2" ry="9" fill="#1E293B"/>
+    </svg>
+  </div>
+
+  <!-- تلال خضراء -->
+  <svg viewBox="0 0 1440 300" preserveAspectRatio="none" class="absolute bottom-0 left-0 w-full h-72 md:h-96">
+    <path d="M0,180 Q360,60 720,190 T1440,140 L1440,300 L0,300 Z" fill="#4ADE80"/>
+    <path d="M0,240 Q480,140 960,250 T1440,220 L1440,300 L0,300 Z" fill="#22C55E"/>
+    <path d="M0,270 Q360,220 720,280 T1440,260 L1440,300 L0,300 Z" fill="#16A34A"/>
+  </svg>
+
+  <!-- أشجار -->
+  <div class="absolute bottom-40 left-6 md:left-16">
+    <svg width="100" height="180" viewBox="0 0 100 180">
+      <rect x="45" y="100" width="12" height="80" fill="#78350F" rx="3"/>
+      <polygon points="50,10 95,80 5,80" fill="#15803D"/>
+      <polygon points="50,50 100,120 0,120" fill="#166534"/>
+      <polygon points="50,90 100,160 0,160" fill="#14532D"/>
+    </svg>
+  </div>
+  <div class="absolute bottom-40 right-6 md:right-16">
+    <svg width="90" height="160" viewBox="0 0 100 180">
+      <rect x="45" y="100" width="12" height="80" fill="#78350F" rx="3"/>
+      <polygon points="50,10 95,80 5,80" fill="#16A34A"/>
+      <polygon points="50,50 100,120 0,120" fill="#15803D"/>
+      <polygon points="50,90 100,160 0,160" fill="#166534"/>
+    </svg>
+  </div>
+
+  <!-- أطفال يلعبون -->
+  <!-- طفلة تقفز -->
+  <div class="absolute bottom-28 left-1/4 kid-jump">
+    <svg width="100" height="160" viewBox="0 0 100 160">
+      <ellipse cx="50" cy="155" rx="35" ry="5" fill="rgba(0,0,0,.1)"/>
+      <circle cx="50" cy="30" r="22" fill="#FDBA74"/>
+      <path d="M32 26 Q50 6 68 26 Q68 34 62 36 Q50 28 38 36 Q32 34 32 26" fill="#7C2D12"/>
+      <circle cx="43" cy="28" r="3" fill="#1E293B"/>
+      <circle cx="57" cy="28" r="3" fill="#1E293B"/>
+      <circle cx="42" cy="27" r="1" fill="#FFFFFF"/>
+      <circle cx="56" cy="27" r="1" fill="#FFFFFF"/>
+      <ellipse cx="38" cy="36" rx="4" ry="2.5" fill="#FB7185" opacity=".7"/>
+      <ellipse cx="62" cy="36" rx="4" ry="2.5" fill="#FB7185" opacity=".7"/>
+      <path d="M44 40 Q50 45 56 40" stroke="#1E293B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <rect x="35" y="52" width="30" height="48" rx="10" fill="#EC4899"/>
+      <path d="M35 65 L20 85" stroke="#FDBA74" stroke-width="9" stroke-linecap="round"/>
+      <path d="M65 65 L80 85" stroke="#FDBA74" stroke-width="9" stroke-linecap="round"/>
+      <path d="M42 100 L38 140" stroke="#1E40AF" stroke-width="10" stroke-linecap="round"/>
+      <path d="M58 100 L62 140" stroke="#1E40AF" stroke-width="10" stroke-linecap="round"/>
+      <ellipse cx="36" cy="143" rx="10" ry="5" fill="#7C2D12"/>
+      <ellipse cx="64" cy="143" rx="10" ry="5" fill="#7C2D12"/>
+    </svg>
+  </div>
+
+  <!-- طفل يلوح -->
+  <div class="absolute bottom-28 right-1/4 kid-wave">
+    <svg width="100" height="160" viewBox="0 0 100 160">
+      <ellipse cx="50" cy="155" rx="35" ry="5" fill="rgba(0,0,0,.1)"/>
+      <circle cx="50" cy="30" r="22" fill="#FDBA74"/>
+      <path d="M30 22 Q50 4 70 22 L70 18 Q50 0 30 18 Z" fill="#1E293B"/>
+      <circle cx="43" cy="28" r="3" fill="#1E293B"/>
+      <circle cx="57" cy="28" r="3" fill="#1E293B"/>
+      <circle cx="42" cy="27" r="1" fill="#FFFFFF"/>
+      <circle cx="56" cy="27" r="1" fill="#FFFFFF"/>
+      <ellipse cx="38" cy="36" rx="4" ry="2.5" fill="#FB7185" opacity=".7"/>
+      <ellipse cx="62" cy="36" rx="4" ry="2.5" fill="#FB7185" opacity=".7"/>
+      <path d="M44 40 Q50 45 56 40" stroke="#1E293B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <rect x="35" y="52" width="30" height="48" rx="10" fill="#0EA5E9"/>
+      <path d="M35 65 L18 55 L20 40" stroke="#FDBA74" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M65 65 L82 78" stroke="#FDBA74" stroke-width="9" stroke-linecap="round"/>
+      <path d="M42 100 L38 140" stroke="#78350F" stroke-width="10" stroke-linecap="round"/>
+      <path d="M58 100 L62 140" stroke="#78350F" stroke-width="10" stroke-linecap="round"/>
+      <ellipse cx="36" cy="143" rx="10" ry="5" fill="#1E293B"/>
+      <ellipse cx="64" cy="143" rx="10" ry="5" fill="#1E293B"/>
+    </svg>
+  </div>
+
+  <!-- طفل يجلس ويلعب -->
+  <div class="absolute bottom-24 left-1/2 -translate-x-1/2">
+    <svg width="120" height="150" viewBox="0 0 120 150">
+      <ellipse cx="60" cy="145" rx="45" ry="5" fill="rgba(0,0,0,.1)"/>
+      <!-- أرضية اللعب -->
+      <ellipse cx="60" cy="130" rx="55" ry="15" fill="#FED7AA" opacity=".6"/>
+      <!-- الأشكال على الأرض -->
+      <circle cx="35" cy="125" r="10" fill="#FACC15" stroke="#CA8A04" stroke-width="2"/>
+      <rect x="60" y="115" width="20" height="20" fill="#38BDF8" stroke="#0284C7" stroke-width="2" rx="3"/>
+      <polygon points="95,135 105,115 115,135" fill="#FB7185" stroke="#BE123C" stroke-width="2"/>
+      <!-- الطفل -->
+      <circle cx="60" cy="40" r="20" fill="#FDBA74"/>
+      <path d="M42 36 Q60 18 78 36 Q78 44 72 44 Q60 36 48 44 Q42 44 42 36" fill="#1E293B"/>
+      <circle cx="54" cy="38" r="2.5" fill="#1E293B"/>
+      <circle cx="66" cy="38" r="2.5" fill="#1E293B"/>
+      <path d="M55 48 Q60 52 65 48" stroke="#1E293B" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <rect x="45" y="60" width="30" height="40" rx="10" fill="#A78BFA"/>
+      <path d="M45 70 L30 85" stroke="#FDBA74" stroke-width="8" stroke-linecap="round"/>
+      <path d="M75 70 L90 85" stroke="#FDBA74" stroke-width="8" stroke-linecap="round"/>
+      <!-- ساقان مطويتان -->
+      <ellipse cx="45" cy="115" rx="12" ry="8" fill="#78350F"/>
+      <ellipse cx="75" cy="115" rx="12" ry="8" fill="#78350F"/>
+    </svg>
+  </div>
+
+  <!-- كرة تقفز -->
+  <div class="absolute bottom-56 left-1/3 ball-bounce">
+    <svg width="55" height="55" viewBox="0 0 60 60">
+      <circle cx="30" cy="30" r="26" fill="#F87171" stroke="#B91C1C" stroke-width="3"/>
+      <path d="M10 30 Q30 20 50 30 M30 6 Q25 30 30 54" stroke="#B91C1C" stroke-width="2.5" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- نجمة كبيرة -->
+  <div class="absolute top-2/3 left-16 float">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="#FDE047" stroke="#F59E0B" stroke-width="1.5">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>
+  </div>
+
+  <!-- المحتوى -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center px-4 pb-16 z-10">
+    <div class="text-center max-w-2xl">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-3 pop" style="text-shadow: 0 6px 0 rgba(0,0,0,.15), 0 0 40px rgba(255,255,255,.7);">
+        عالم الأشكال
+      </h1>
+      <p class="text-xl md:text-3xl font-black text-white mb-10" style="text-shadow: 0 3px 0 rgba(0,0,0,.2);">
+        مغامرة ممتعة لتعلم الأشكال الأربعة!
+      </p>
+      <button onclick="startApp()" class="start-btn text-white font-black text-2xl md:text-4xl py-7 px-14 md:px-20 rounded-full">
+        <span class="flex items-center gap-4">
+          ابدأ المغامرة
+          <svg viewBox="0 0 24 24" class="w-9 h-9 md:w-12 md:h-12" fill="white">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </span>
+      </button>
+      <div class="mt-8 flex flex-wrap justify-center gap-4 text-white text-sm md:text-base font-bold" style="text-shadow: 0 1px 2px rgba(0,0,0,.3);">
+        <div class="bg-white/20 backdrop-blur rounded-full px-5 py-2 flex items-center gap-2">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="#FDE047"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          مكافآت
+        </div>
+        <div class="bg-white/20 backdrop-blur rounded-full px-5 py-2 flex items-center gap-2">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          بلا ضغط
+        </div>
+        <div class="bg-white/20 backdrop-blur rounded-full px-5 py-2 flex items-center gap-2">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          بإيقاع الطفل
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- الشريط العلوي -->
+<header class="bg-white/95 backdrop-blur border-b-2 border-slate-200 sticky top-0 z-40 shadow-sm no-print">
+  <div class="max-w-5xl mx-auto px-3 py-2.5">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <button onclick="openMap()" class="btn-tactile flex items-center gap-1.5 bg-sky-50 hover:bg-sky-100 text-sky-800 font-extrabold px-3 py-2 rounded-xl text-sm border-2 border-sky-200">
+          <svg class="icon text-lg" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          <span class="hidden sm:inline">الخريطة</span>
+        </button>
+        <div class="flex items-center gap-1.5 bg-yellow-50 text-yellow-800 font-black px-3 py-2 rounded-xl text-sm border-2 border-yellow-200">
+          <svg class="icon text-lg" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span id="star-count">0</span>
+        </div>
+      </div>
+      <div class="hidden md:block text-center">
+        <h1 class="text-base font-black text-slate-800">عالم الأشكال</h1>
+        <p class="text-xs font-bold text-slate-500">مغامرة تعليمية ممتعة</p>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button onclick="repeatPrompt()" title="اسمع" class="btn-tactile flex items-center justify-center bg-yellow-400 hover:bg-yellow-500 text-slate-900 w-10 h-10 rounded-xl border-2 border-yellow-600">
+          <svg class="icon text-xl" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        </button>
+        <button onclick="toggleMusic()" id="music-btn" title="الموسيقى" class="btn-tactile flex items-center justify-center bg-pink-50 hover:bg-pink-100 text-pink-800 w-10 h-10 rounded-xl border-2 border-pink-200">
+          <svg class="icon text-xl" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        </button>
+        <button onclick="toggleCalm()" id="calm-btn" title="الوضع الحسي" class="btn-tactile flex items-center justify-center bg-teal-50 hover:bg-teal-100 text-teal-800 w-10 h-10 rounded-xl border-2 border-teal-200">
+          <svg class="icon text-xl" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </button>
+        <button onclick="toggleNight()" id="night-btn" title="الوضع الليلي" class="btn-tactile flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-800 w-10 h-10 rounded-xl border-2 border-slate-300">
+          <svg class="icon text-xl" viewBox="0 0 24 24"><path d="M12.3 4.9c.4-.2.6-.7.5-1.1s-.5-.8-1-.8C6.7 2.7 2.5 6.9 2.5 12s4.2 9.3 9.3 9.3c.5 0 .9-.4.9-.9s-.2-.9-.6-1.1c-3.7-1.6-6.1-5.1-6.1-9.3s2.4-7.7 6.1-9.3z"/></svg>
+        </button>
+        <button onclick="openTeacher()" title="وضع المعلم" class="btn-tactile flex items-center justify-center bg-violet-50 hover:bg-violet-100 text-violet-800 w-10 h-10 rounded-xl border-2 border-violet-200">
+          <svg class="icon text-xl" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </button>
+        <button onclick="toggleMute()" id="mute-btn" title="الصوت" class="btn-tactile flex items-center justify-center bg-emerald-50 hover:bg-emerald-100 text-emerald-800 w-10 h-10 rounded-xl border-2 border-emerald-200">
+          <svg class="icon text-xl" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mt-2 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+      <div id="top-progress" class="top-progress" style="width:0%"></div>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="relative z-10 flex-grow max-w-4xl w-full mx-auto px-3 py-5 flex flex-col"></main>
+
+<div id="fb-banner" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-8 w-11/12 max-w-md no-print">
+  <div id="fb-content" class="flex items-center justify-center gap-3 px-5 py-3 rounded-2xl shadow-2xl border-2 text-center font-black text-base">
+    <span id="fb-icon" class="text-2xl"></span><span id="fb-text">أحسنت!</span>
+  </div>
+</div>
+
+<footer class="relative z-10 text-center py-3 text-slate-500 font-bold text-xs no-print">
+  عالم الأشكال • صُمم بعناية لذوي الاحتياجات الخاصة ❤️
+</footer>
+
+<script>
+/* ============================================================
+   بيانات الأشكال
+   ============================================================ */
+const SHAPES = {
+  circle: {
+    key:'circle', name:'الدائرة', spoken:'الدَّائِرَة', color:'#FACC15', stroke:'#CA8A04', bg:'#FEFCE8',
+    desc:'أنا الدائرة! شكلي مستدير وليس لي زوايا.',
+    spokenDesc:'أَنَا الدَّائِرَة. شَكْلِي مُسْتَدِيرٌ وَلَيْسَ لِي زَوَايَا.',
+    sides:'ليس لي أضلاع', corners:'ليس لي زوايا',
+    tracePath:'M 100 20 A 80 80 0 1 1 99.9 20',
+    story:[
+      {icon:'sun', text:'مرحباً! أنا الدائرة المشمسة.'},
+      {icon:'ball', text:'أنا مستديرة مثل الكرة، أتدحرج بسهولة.'},
+      {icon:'wheel', text:'هل تجدني في العجلة؟ هيا نتعلم معاً!'}
+    ],
+    realObjects:[{name:'شمس',icon:'sun'},{name:'كرة',icon:'ball'},{name:'ساعة',icon:'clock'},{name:'عجلة',icon:'wheel'}],
+    svg:(c,b,size='100%')=>`<svg viewBox="0 0 200 200" width="${size}" height="${size}" style="display:block"><circle cx="100" cy="100" r="80" fill="${c||'#FACC15'}" stroke="${b||'#CA8A04'}" stroke-width="6"/></svg>`,
+    svgFull:()=>`<svg viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="80" fill="#FACC15" stroke="#CA8A04" stroke-width="6"/><circle cx="75" cy="85" r="8" fill="#1E293B"/><circle cx="125" cy="85" r="8" fill="#1E293B"/><circle cx="72" cy="82" r="2.5" fill="#FFFFFF"/><circle cx="122" cy="82" r="2.5" fill="#FFFFFF"/><ellipse cx="60" cy="105" rx="8" ry="5" fill="#FB7185" opacity=".7"/><ellipse cx="140" cy="105" rx="8" ry="5" fill="#FB7185" opacity=".7"/><path d="M80 115 Q100 130 120 115" stroke="#1E293B" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`
+  },
+  square: {
+    key:'square', name:'المربع', spoken:'الْمُرَبَّع', color:'#38BDF8', stroke:'#0284C7', bg:'#F0F9FF',
+    desc:'أنا المربع! لي أربعة أضلاع متساوية وأربع زوايا.',
+    spokenDesc:'أَنَا الْمُرَبَّع. لِي أَرْبَعَةُ أَضْلَاعٍ مُتَسَاوِيَةٌ وَأَرْبَعُ زَوَايَا.',
+    sides:'لي أربعة أضلاع متساوية', corners:'لي أربع زوايا',
+    tracePath:'M 30 30 L 170 30 L 170 170 L 30 170 Z',
+    story:[
+      {icon:'gift', text:'مرحباً! أنا المربع الأزرق.'},
+      {icon:'window', text:'لي أربعة أضلاع متساوية تماماً.'},
+      {icon:'ice', text:'وكل زواياي قائمة، مثلي مثل النافذة!'}
+    ],
+    realObjects:[{name:'علبة',icon:'gift'},{name:'نافذة',icon:'window'},{name:'مكعب',icon:'ice'},{name:'إطار',icon:'frame'}],
+    svg:(c,b,size='100%')=>`<svg viewBox="0 0 200 200" width="${size}" height="${size}" style="display:block"><rect x="25" y="25" width="150" height="150" rx="10" fill="${c||'#38BDF8'}" stroke="${b||'#0284C7'}" stroke-width="6"/></svg>`,
+    svgFull:()=>`<svg viewBox="0 0 200 200" width="100%" height="100%"><rect x="25" y="25" width="150" height="150" rx="10" fill="#38BDF8" stroke="#0284C7" stroke-width="6"/><circle cx="75" cy="85" r="8" fill="#1E293B"/><circle cx="125" cy="85" r="8" fill="#1E293B"/><circle cx="72" cy="82" r="2.5" fill="#FFFFFF"/><circle cx="122" cy="82" r="2.5" fill="#FFFFFF"/><ellipse cx="58" cy="105" rx="8" ry="5" fill="#FB7185" opacity=".7"/><ellipse cx="142" cy="105" rx="8" ry="5" fill="#FB7185" opacity=".7"/><path d="M80 115 Q100 130 120 115" stroke="#1E293B" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`
+  },
+  triangle: {
+    key:'triangle', name:'المثلث', spoken:'الْمُثَلَّث', color:'#FB7185', stroke:'#BE123C', bg:'#FFF1F2',
+    desc:'أنا المثلث! لي ثلاثة أضلاع وثلاث زوايا.',
+    spokenDesc:'أَنَا الْمُثَلَّث. لِي ثَلَاثَةُ أَضْلَاعٍ وَثَلَاثُ زَوَايَا.',
+    sides:'لي ثلاثة أضلاع', corners:'لي ثلاث زوايا',
+    tracePath:'M 100 25 L 175 165 L 25 165 Z',
+    story:[
+      {icon:'pizza', text:'مرحباً! أنا المثلث الوردي.'},
+      {icon:'pyramid', text:'لي ثلاثة أضلاع فقط، لا أكثر.'},
+      {icon:'tree', text:'أنا موجود في البيتزا والهرم والشجرة!'}
+    ],
+    realObjects:[{name:'بيتزا',icon:'pizza'},{name:'هرم',icon:'pyramid'},{name:'بطيخ',icon:'watermelon'},{name:'شجرة',icon:'tree'}],
+    svg:(c,b,size='100%')=>`<svg viewBox="0 0 200 200" width="${size}" height="${size}" style="display:block"><polygon points="100,25 175,165 25,165" fill="${c||'#FB7185'}" stroke="${b||'#BE123C'}" stroke-width="6" stroke-linejoin="round"/></svg>`,
+    svgFull:()=>`<svg viewBox="0 0 200 200" width="100%" height="100%"><polygon points="100,25 175,165 25,165" fill="#FB7185" stroke="#BE123C" stroke-width="6" stroke-linejoin="round"/><circle cx="80" cy="105" r="8" fill="#1E293B"/><circle cx="120" cy="105" r="8" fill="#1E293B"/><circle cx="77" cy="102" r="2.5" fill="#FFFFFF"/><circle cx="117" cy="102" r="2.5" fill="#FFFFFF"/><ellipse cx="63" cy="122" rx="8" ry="5" fill="#FDE047" opacity=".8"/><ellipse cx="137" cy="122" rx="8" ry="5" fill="#FDE047" opacity=".8"/><path d="M85 130 Q100 145 115 130" stroke="#1E293B" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`
+  },
+  rectangle: {
+    key:'rectangle', name:'المستطيل', spoken:'الْمُسْتَطِيل', color:'#34D399', stroke:'#047857', bg:'#ECFDF5',
+    desc:'أنا المستطيل! لي ضلعان طويلان وضلعان قصيران.',
+    spokenDesc:'أَنَا الْمُسْتَطِيل. لِي ضِلْعَانِ طَوِيلَانِ وَضِلْعَانِ قَصِيرَان.',
+    sides:'لي ضلعان طويلان وضلعان قصيران', corners:'لي أربع زوايا',
+    tracePath:'M 20 55 L 180 55 L 180 145 L 20 145 Z',
+    story:[
+      {icon:'door', text:'مرحباً! أنا المستطيل الأخضر.'},
+      {icon:'bus', text:'لي ضلعان طويلان وضلعان قصيران.'},
+      {icon:'book', text:'أنا في الباب والحافلة والكتاب!'}
+    ],
+    realObjects:[{name:'باب',icon:'door'},{name:'حافلة',icon:'bus'},{name:'كتاب',icon:'book'},{name:'تلفاز',icon:'tv'}],
+    svg:(c,b,size='100%')=>`<svg viewBox="0 0 200 200" width="${size}" height="${size}" style="display:block"><rect x="15" y="55" width="170" height="90" rx="10" fill="${c||'#34D399'}" stroke="${b||'#047857'}" stroke-width="6"/></svg>`,
+    svgFull:()=>`<svg viewBox="0 0 200 200" width="100%" height="100%"><rect x="15" y="55" width="170" height="90" rx="10" fill="#34D399" stroke="#047857" stroke-width="6"/><circle cx="75" cy="95" r="8" fill="#1E293B"/><circle cx="125" cy="95" r="8" fill="#1E293B"/><circle cx="72" cy="92" r="2.5" fill="#FFFFFF"/><circle cx="122" cy="92" r="2.5" fill="#FFFFFF"/><ellipse cx="58" cy="115" rx="8" ry="5" fill="#FB7185" opacity=".7"/><ellipse cx="142" cy="115" rx="8" ry="5" fill="#FB7185" opacity=".7"/><path d="M85 120 Q100 133 115 120" stroke="#1E293B" stroke-width="6" fill="none" stroke-linecap="round"/></svg>`
+  }
+};
+const KEYS = ['circle','square','triangle','rectangle'];
+const STAGE_NAMES = ['المس وتتبع','غطِّ الشكل','وصل الشكل بظله','اعثر عليه','سمِّه'];
+const PRAISE = ['مُمْتَاز! أَنْتِ بَطَلَة!','رَائِعٌ جِدّاً!','أَحْسَنْتِ!','مُذْهِل!','عَمَلٌ رَائِع!'];
+const ENCOURAGE = ['حَاوِلِي مَرَّةً أُخْرَى! أَنْتِ قَرِيبَةٌ 💪','لَا بَأْسَ، جَرِّبِي مَرَّةً أُخْرَى!','أَنْتِ بَطَلَة! حَاوِلِي ثَانِيَة 🌟','مُمْتَاز! وَاصِلِي الْمُحَاوَلَة!'];
+
+/* ============================================================
+   الحالة
+   ============================================================ */
+const DEFAULT_STATE = {
+  stars:0,
+  shapeProgress:{circle:0,square:0,triangle:0,rectangle:0},
+  unlocked:{circle:true,square:false,triangle:false,rectangle:false},
+  mistakes:{circle:0,square:0,triangle:0,rectangle:0},
+  consecutiveCorrect:{circle:0,square:0,triangle:0,rectangle:0},
+  consecutiveWrong:{circle:0,square:0,triangle:0,rectangle:0},
+  calm:false, night:false, muted:false, music:false,
+  difficulty:3,
+  childName:'',
+};
+let state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+let currentShape=null, currentStage=0, currentPrompt='';
+
+function loadState(){
+  try{ const raw=localStorage.getItem('worldShapes_v5'); if(raw){ const s=JSON.parse(raw); state=Object.assign({},DEFAULT_STATE,s); } }catch(e){}
+  applyTheme();
+  updateTopProgress();
+}
+function saveState(){ try{ localStorage.setItem('worldShapes_v5', JSON.stringify(state)); }catch(e){} }
+function applyTheme(){
+  document.body.classList.toggle('calm', !!state.calm);
+  document.body.classList.toggle('night', !!state.night);
+  const mb=document.getElementById('mute-btn');
+  if(mb){
+    if(state.muted){
+      mb.innerHTML='<svg class="icon text-xl" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+    }else{
+      mb.innerHTML='<svg class="icon text-xl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>';
+    }
+  }
+  const sc=document.getElementById('star-count'); if(sc) sc.textContent = state.stars;
+  const mu=document.getElementById('music-btn');
+  if(mu){
+    if(state.music){
+      mu.classList.remove('bg-pink-50','text-pink-800','border-pink-200');
+      mu.classList.add('bg-pink-500','text-white','border-pink-700');
+    }else{
+      mu.classList.add('bg-pink-50','text-pink-800','border-pink-200');
+      mu.classList.remove('bg-pink-500','text-white','border-pink-700');
+    }
+  }
+}
+function updateTopProgress(){
+  const total = KEYS.reduce((a,k)=>a+state.shapeProgress[k],0);
+  const pct = (total/20)*100;
+  const bar = document.getElementById('top-progress');
+  if(bar) bar.style.width = pct + '%';
+}
+
+/* ============================================================
+   الصوت الاحترافي
+   ============================================================ */
+let actx=null, master=null, arabicVoice=null, cloudAudio=null, musicNodes=null;
+
+function ensureAudio(){
+  if(!actx){
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return;
+    actx = new AC();
+    const comp = actx.createDynamicsCompressor();
+    comp.threshold.value=-18; comp.knee.value=20; comp.ratio.value=5;
+    master = actx.createGain(); master.gain.value=1.0;
+    comp.connect(master); master.connect(actx.destination);
+    actx._out = comp;
+  }
+  if(actx.state==='suspended') actx.resume();
+}
+function initVoices(){
+  if(!('speechSynthesis' in window)) return;
+  const load=()=>{
+    const vs=window.speechSynthesis.getVoices();
+    arabicVoice=vs.find(v=>v.lang==='ar-SA')||vs.find(v=>v.lang.startsWith('ar-'))||vs.find(v=>v.lang.toLowerCase().includes('ar'))||null;
+  };
+  load(); window.speechSynthesis.onvoiceschanged=load;
+  setTimeout(load, 500); setTimeout(load, 1500);
+}
+initVoices();
+
+function tone(freq,dur=0.15,type='sine',vol=0.3,delay=0){
+  if(state.muted) return;
+  ensureAudio(); if(!actx) return;
+  const t=actx.currentTime+delay;
+  const o=actx.createOscillator(), g=actx.createGain();
+  o.type=type; o.frequency.value=freq;
+  o.connect(g); g.connect(actx._out);
+  g.gain.setValueAtTime(0,t);
+  g.gain.linearRampToValueAtTime(vol,t+0.01);
+  g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  o.start(t); o.stop(t+dur+0.05);
+}
+function applause(dur=1.2){
+  if(state.muted) return;
+  ensureAudio(); if(!actx) return;
+  const sr=actx.sampleRate, len=Math.floor(sr*dur);
+  const buf=actx.createBuffer(1,len,sr);
+  const d=buf.getChannelData(0);
+  for(let i=0;i<len;i++){
+    const t=i/len;
+    const env=Math.pow(Math.sin(Math.PI*t),0.6);
+    const f=0.6+0.4*Math.sin(i*0.001);
+    d[i]=(Math.random()*2-1)*env*f*0.5;
+  }
+  const src=actx.createBufferSource(); src.buffer=buf;
+  const bp=actx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=1600; bp.Q.value=0.9;
+  const g=actx.createGain(); g.gain.value=0.85;
+  src.connect(bp); bp.connect(g); g.connect(actx._out);
+  src.start(); src.stop(actx.currentTime+dur+0.05);
+}
+function clickSound(){ tone(560,0.07,'sine',0.22); }
+function correctSound(){ tone(523,0.12); tone(659,0.12,'sine',0.3,0.1); tone(784,0.18,'sine',0.3,0.2); }
+function wrongSound(){ tone(300,0.18,'triangle',0.22); tone(260,0.18,'triangle',0.18,0.13); }
+function successSound(){ correctSound(); setTimeout(applause,240); }
+function shapeMelody(k){
+  const m={circle:[523,659],square:[440,554],triangle:[587,880],rectangle:[392,523]};
+  const f=m[k]||[523,659];
+  f.forEach((fr,i)=>tone(fr,0.18,'triangle',0.26,i*0.11));
+}
+
+// موسيقى خلفية هادئة
+function startMusic(){
+  if(!state.music || state.muted) return;
+  ensureAudio(); if(!actx) return;
+  stopMusic();
+  const notes = [261.63, 329.63, 392.00, 523.25]; // C E G C
+  musicNodes = [];
+  const playLoop = ()=>{
+    if(!state.music || state.muted) return;
+    notes.forEach((freq, i)=>{
+      const t = actx.currentTime + i*0.6;
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'sine';
+      o.frequency.value = freq;
+      o.connect(g); g.connect(actx._out);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.04, t+0.1);
+      g.gain.exponentialRampToValueAtTime(0.001, t+1.2);
+      o.start(t); o.stop(t+1.3);
+      musicNodes.push({o,g});
+    });
+  };
+  playLoop();
+  if(musicNodes._interval) clearInterval(musicNodes._interval);
+  musicNodes._interval = setInterval(playLoop, 2400);
+}
+function stopMusic(){
+  if(musicNodes){
+    if(musicNodes._interval) clearInterval(musicNodes._interval);
+    musicNodes.forEach(n=>{ try{n.o.stop();}catch(e){} });
+    musicNodes = null;
+  }
+}
+function toggleMusic(){
+  state.music = !state.music;
+  saveState(); applyTheme();
+  if(state.music) startMusic(); else stopMusic();
+  if(!state.music) speak('تَمَّ إِيقَافُ الْمُوسِيقَى', false);
+}
+
+function speak(text,save=true){
+  if(save) currentPrompt=text;
+  if(state.muted) return;
+  if(cloudAudio){ try{cloudAudio.pause();}catch(e){} cloudAudio=null; }
+  if('speechSynthesis' in window){ try{ window.speechSynthesis.cancel(); }catch(e){} }
+
+  if('speechSynthesis' in window){
+    try{
+      if(!arabicVoice){
+        const vs=window.speechSynthesis.getVoices();
+        arabicVoice=vs.find(v=>v.lang==='ar-SA')||vs.find(v=>v.lang.startsWith('ar-'))||vs.find(v=>v.lang.toLowerCase().includes('ar'))||null;
+      }
+      if(arabicVoice){
+        const u=new SpeechSynthesisUtterance(text);
+        u.lang=arabicVoice.lang; u.voice=arabicVoice;
+        u.rate=0.82; u.pitch=1.15; u.volume=1.0;
+        let started=false;
+        u.onstart=()=>{started=true;};
+        window.speechSynthesis.speak(u);
+        setTimeout(()=>{
+          if(!started && !state.muted){
+            try{ window.speechSynthesis.cancel(); }catch(e){}
+            speakCloud(text);
+          }
+        }, 800);
+        return;
+      }
+    }catch(e){}
+  }
+  speakCloud(text);
+}
+function speakCloud(text){
+  if(state.muted) return;
+  try{
+    const clean=text.replace(/[\u064B-\u065F]/g,'');
+    const url=`https://translate.googleapis.com/translate_tts?ie=UTF-8&tl=ar&client=tw-ob&q=${encodeURIComponent(clean.slice(0,180))}`;
+    const a=new Audio(url);
+    a.volume=1.0;
+    cloudAudio=a;
+    a.play().catch(()=>{});
+  }catch(e){}
+}
+function repeatPrompt(){ clickSound(); if(currentPrompt) speak(currentPrompt,false); }
+
+/* ============================================================
+   التغذية الراجعة
+   ============================================================ */
+let fbTimer;
+function feedback(ok,msg){
+  const b=document.getElementById('fb-banner'), c=document.getElementById('fb-content');
+  const i=document.getElementById('fb-icon'), t=document.getElementById('fb-text');
+  clearTimeout(fbTimer);
+  if(ok){
+    c.className='flex items-center justify-center gap-3 px-5 py-3 rounded-2xl shadow-2xl border-2 bg-emerald-50 border-emerald-300 text-emerald-900 font-black text-base';
+    i.innerHTML='<svg class="icon text-2xl" viewBox="0 0 24 24" fill="#10B981"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+    t.textContent=msg; successSound(); confetti();
+  }else{
+    c.className='flex items-center justify-center gap-3 px-5 py-3 rounded-2xl shadow-2xl border-2 bg-amber-50 border-amber-300 text-amber-900 font-black text-base';
+    i.innerHTML='<svg class="icon text-2xl" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>';
+    t.textContent=msg; wrongSound();
+  }
+  b.classList.remove('opacity-0','translate-y-8'); b.classList.add('opacity-100','translate-y-0');
+  fbTimer=setTimeout(()=>{b.classList.remove('opacity-100','translate-y-0');b.classList.add('opacity-0','translate-y-8');},2400);
+}
+
+/* ============================================================
+   القصاصات
+   ============================================================ */
+const canvas=document.getElementById('confetti'), cctx=canvas.getContext('2d');
+let parts=[];
+function resizeC(){canvas.width=innerWidth;canvas.height=innerHeight;}
+addEventListener('resize',resizeC); resizeC();
+function confetti(){
+  if(state.calm) return;
+  const colors=['#FACC15','#38BDF8','#FB7185','#34D399','#A855F7','#0EA5E9','#EC4899'];
+  for(let i=0;i<55;i++) parts.push({x:innerWidth/2+(Math.random()-.5)*260,y:innerHeight/2,vx:(Math.random()-.5)*16,vy:(Math.random()-1)*16-3,s:Math.random()*12+6,c:colors[Math.floor(Math.random()*colors.length)],a:1,r:Math.random()*360,shape:Math.random()>.5?'rect':'circle'});
+}
+function drawConfetti(){
+  cctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let i=parts.length-1;i>=0;i--){
+    const p=parts[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.4; p.a-=0.012; p.r+=5;
+    if(p.a<=0){parts.splice(i,1);continue;}
+    cctx.save(); cctx.globalAlpha=p.a; cctx.translate(p.x,p.y); cctx.rotate(p.r*Math.PI/180);
+    cctx.fillStyle=p.c;
+    if(p.shape==='rect') cctx.fillRect(-p.s/2,-p.s/2,p.s,p.s);
+    else{ cctx.beginPath(); cctx.arc(0,0,p.s/2,0,Math.PI*2); cctx.fill(); }
+    cctx.restore();
+  }
+  requestAnimationFrame(drawConfetti);
+}
+drawConfetti();
+
+function addStar(n=1){ state.stars+=n; saveState(); applyTheme(); updateTopProgress(); }
+
+/* ============================================================
+   التقييم التكيفي
+   ============================================================ */
+function adaptDifficulty(correct){
+  const k=currentShape; if(!k) return;
+  if(correct){
+    state.consecutiveCorrect[k]=(state.consecutiveCorrect[k]||0)+1;
+    state.consecutiveWrong[k]=0;
+    if(state.consecutiveCorrect[k]>=3 && state.difficulty<4){ state.difficulty++; state.consecutiveCorrect[k]=0; }
+  }else{
+    state.consecutiveWrong[k]=(state.consecutiveWrong[k]||0)+1;
+    state.consecutiveCorrect[k]=0;
+    if(state.consecutiveWrong[k]>=2 && state.difficulty>2){ state.difficulty--; state.consecutiveWrong[k]=0; }
+  }
+  saveState();
+}
+
+/* ============================================================
+   بدء التطبيق
+   ============================================================ */
+function startApp(){
+  ensureAudio();
+  if('speechSynthesis' in window){
+    try{ window.speechSynthesis.resume(); window.speechSynthesis.getVoices(); }catch(e){}
+  }
+  clickSound();
+  speak('أَهْلاً بِكِ فِي عَالَمِ الْأَشْكَال!', false);
+  if(state.music) startMusic();
+  const s=document.getElementById('start-screen');
+  s.classList.add('opacity-0','transition-opacity','duration-500');
+  setTimeout(()=>s.remove(),500);
+  setTimeout(openMap, 600);
+}
+function toggleMute(){ state.muted=!state.muted; saveState(); applyTheme(); if(!state.muted) clickSound(); if(state.muted) stopMusic(); else if(state.music) startMusic(); }
+function toggleCalm(){ state.calm=!state.calm; saveState(); applyTheme(); if(!state.calm) clickSound(); }
+function toggleNight(){ state.night=!state.night; saveState(); applyTheme(); if(!state.night) clickSound(); }
+
+/* ============================================================
+   خريطة الرحلة
+   ============================================================ */
+function openMap(){
+  const app=document.getElementById('app');
+  app.innerHTML=`
+    <div class="fade-up space-y-5">
+      <div class="bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-lg text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-20 h-20 bg-sky-100 rounded-full -translate-x-10 -translate-y-10"></div>
+        <div class="absolute bottom-0 right-0 w-24 h-24 bg-yellow-100 rounded-full translate-x-12 translate-y-12"></div>
+        <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-1 relative">🗺️ خريطة الرحلة</h2>
+        <p class="text-base font-bold text-slate-600 relative">اختر شكلاً لتبدأ رحلته. كل شكل يفتح بعد إتقان الذي قبله.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        ${KEYS.map(k=>{
+          const s=SHAPES[k], prog=state.shapeProgress[k], unlocked=state.unlocked[k], done=prog>=5;
+          return `
+            <div class="relative bg-white rounded-3xl border-2 p-5 flex flex-col items-center gap-3 shadow-md hover:shadow-lg transition-all ${unlocked?'border-slate-200':'border-slate-300 opacity-60'}">
+              ${!unlocked?`<div class="absolute inset-0 bg-white/70 rounded-3xl flex items-center justify-center z-10">
+                <svg class="icon text-5xl text-slate-400" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              </div>`:''}
+              <div class="w-28 h-28">${s.svgFull()}</div>
+              <h3 class="text-xl font-black text-slate-900">${s.name}</h3>
+              <div class="progress-rail">
+                ${[1,2,3,4,5].map(n=>`<div class="progress-dot ${n<=prog?'done':''}">${n<=prog?'':n}</div>`).join('')}
+              </div>
+              ${done?`<div class="bg-emerald-50 text-emerald-800 font-black px-4 py-1.5 rounded-xl border-2 border-emerald-200 text-sm">✓ مُتقن</div>`:''}
+              ${unlocked?`
+                <button onclick="startShape('${k}')" class="btn-tactile w-full bg-gradient-to-l from-sky-500 to-emerald-500 text-white font-black text-lg py-3 rounded-2xl border-2 border-sky-700 shadow-md">
+                  ${done?'مراجعة':'ابدأ'}
+                </button>
+              `:`
+                <div class="w-full bg-slate-100 text-slate-400 font-bold text-base py-3 rounded-2xl border-2 border-slate-200 text-center">يُفتح لاحقاً</div>
+              `}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+  speak('هَذِهِ خَرِيطَةُ الرِّحْلَة. اِخْتَرْ شَكْلاً لِنَبْدَأ.', false);
+}
+
+/* ============================================================
+   القصة
+   ============================================================ */
+function startShape(k){
+  clickSound();
+  currentShape=k;
+  const prog=state.shapeProgress[k];
+  currentStage = prog>=5 ? 0 : prog;
+  showStory();
+}
+
+function showStory(){
+  const s=SHAPES[currentShape];
+  let slide=0;
+  speak(s.story[0].text,false);
+  const app=document.getElementById('app');
+  function render(){
+    app.innerHTML=`
+      <div class="fade-up space-y-4">
+        <div class="bg-gradient-to-br from-sky-50 to-white border-4 border-sky-200 rounded-3xl p-8 text-center shadow-lg">
+          <div class="text-7xl mb-4 pop flex justify-center">${getStoryIcon(s.story[slide].icon)}</div>
+          <h2 class="text-2xl md:text-3xl font-black text-slate-900 leading-relaxed mb-2">${s.story[slide].text}</h2>
+          <div class="progress-rail mt-4">
+            ${s.story.map((_,i)=>`<div class="progress-dot ${i===slide?'active':i<slide?'done':''}">${i<=slide?'':i+1}</div>`).join('')}
+          </div>
+        </div>
+        <div class="flex justify-center gap-3">
+          ${slide>0?`<button onclick="prevStory()" class="btn-tactile bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-lg px-6 py-3 rounded-2xl border-2 border-slate-300">← السابق</button>`:''}
+          <button onclick="nextStory()" class="btn-tactile bg-gradient-to-l from-sky-500 to-emerald-500 text-white font-black text-lg px-8 py-3 rounded-2xl border-2 border-sky-700 shadow-md">
+            ${slide<s.story.length-1?'التالي ←':'هيا نبدأ! 🚀'}
+          </button>
+        </div>
+      </div>
+    `;
+  }
+  window.nextStory=()=>{ slide++; if(slide>=s.story.length){goStage();return;} clickSound(); speak(s.story[slide].text,false); render(); };
+  window.prevStory=()=>{ slide--; clickSound(); speak(s.story[slide].text,false); render(); };
+  render();
+}
+
+function getStoryIcon(name){
+  const icons={
+    sun:`<svg viewBox="0 0 100 100" class="w-24 h-24"><circle cx="50" cy="50" r="22" fill="#FACC15" stroke="#F59E0B" stroke-width="3"/><g stroke="#F59E0B" stroke-width="4" stroke-linecap="round"><line x1="50" y1="8" x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="92"/><line x1="8" y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="92" y2="50"/><line x1="20" y1="20" x2="29" y2="29"/><line x1="71" y1="71" x2="80" y2="80"/><line x1="80" y1="20" x2="71" y2="29"/><line x1="29" y1="71" x2="20" y2="80"/></g><circle cx="43" cy="46" r="3" fill="#1E293B"/><circle cx="57" cy="46" r="3" fill="#1E293B"/><path d="M42 58 Q50 66 58 58" stroke="#1E293B" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+    ball:`<svg viewBox="0 0 100 100" class="w-24 h-24"><circle cx="50" cy="50" r="38" fill="#FFFFFF" stroke="#1E293B" stroke-width="3"/><polygon points="50,30 62,42 57,58 43,58 38,42" fill="#1E293B"/><path d="M12 50 L20 44 L28 50 L20 56 Z" fill="#1E293B"/><path d="M88 50 L80 44 L72 50 L80 56 Z" fill="#1E293B"/><path d="M50 12 L56 20 L50 28 L44 20 Z" fill="#1E293B"/><path d="M50 88 L56 80 L50 72 L44 80 Z" fill="#1E293B"/></svg>`,
+    wheel:`<svg viewBox="0 0 100 100" class="w-24 h-24"><circle cx="50" cy="50" r="38" fill="none" stroke="#1E293B" stroke-width="8"/><circle cx="50" cy="50" r="12" fill="#1E293B"/><g stroke="#1E293B" stroke-width="4"><line x1="50" y1="12" x2="50" y2="88"/><line x1="12" y1="50" x2="88" y2="50"/><line x1="23" y1="23" x2="77" y2="77"/><line x1="77" y1="23" x2="23" y2="77"/></g></svg>`,
+    gift:`<svg viewBox="0 0 100 100" class="w-24 h-24"><rect x="15" y="40" width="70" height="50" fill="#38BDF8" stroke="#0284C7" stroke-width="3" rx="4"/><rect x="10" y="30" width="80" height="15" fill="#38BDF8" stroke="#0284C7" stroke-width="3" rx="3"/><rect x="45" y="30" width="10" height="60" fill="#FDE047" stroke="#0284C7" stroke-width="2"/><path d="M50 30 Q30 10 25 25 Q30 30 50 30" fill="#FB7185" stroke="#0284C7" stroke-width="2"/><path d="M50 30 Q70 10 75 25 Q70 30 50 30" fill="#FB7185" stroke="#0284C7" stroke-width="2"/></svg>`,
+    window:`<svg viewBox="0 0 100 100" class="w-24 h-24"><rect x="15" y="15" width="70" height="70" fill="#BAE6FD" stroke="#0284C7" stroke-width="4" rx="4"/><line x1="50" y1="15" x2="50" y2="85" stroke="#0284C7" stroke-width="4"/><line x1="15" y1="50" x2="85" y2="50" stroke="#0284C7" stroke-width="4"/><circle cx="35" cy="32" r="6" fill="#FDE047"/></svg>`,
+    ice:`<svg viewBox="0 0 100 100" class="w-24 h-24"><rect x="20" y="20" width="60" height="60" fill="#BAE6FD" stroke="#0284C7" stroke-width="3" rx="8"/><rect x="30" y="30" width="40" height="40" fill="#E0F2FE" opacity=".7" rx="4"/><path d="M25 30 L35 25" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/></svg>`,
+    pizza:`<svg viewBox="0 0 100 100" class="w-24 h-24"><polygon points="50,10 85,85 15,85" fill="#FDE047" stroke="#CA8A04" stroke-width="3" stroke-linejoin="round"/><circle cx="40" cy="50" r="4" fill="#DC2626"/><circle cx="60" cy="55" r="4" fill="#DC2626"/><circle cx="50" cy="70" r="4" fill="#DC2626"/><circle cx="30" cy="72" r="3" fill="#DC2626"/><circle cx="70" cy="72" r="3" fill="#DC2626"/></svg>`,
+    pyramid:`<svg viewBox="0 0 100 100" class="w-24 h-24"><polygon points="50,10 85,80 15,80" fill="#FBBF24" stroke="#B45309" stroke-width="3" stroke-linejoin="round"/><line x1="50" y1="10" x2="35" y2="80" stroke="#B45309" stroke-width="2"/><line x1="50" y1="10" x2="65" y2="80" stroke="#B45309" stroke-width="2"/></svg>`,
+    tree:`<svg viewBox="0 0 100 100" class="w-24 h-24"><rect x="45" y="70" width="10" height="20" fill="#7C2D12"/><polygon points="50,10 80,45 20,45" fill="#16A34A"/><polygon points="50,30 85,65 15,65" fill="#15803D"/><polygon points="50,50 90,80 10,80" fill="#166534"/></svg>`,
+    door:`<svg viewBox="0 0 100 100" class="w-24 h-24"><rect x="25" y="15" width="50" height="75" fill="#34D399" stroke="#047857" stroke-width="3" rx="3"/><rect x="30" y="20" width="40" height="30" fill="#A7F3D0" stroke="#047857" stroke-width="2"/><rect x="30" y="55" width="40" height="30" fill="#A7F3D0" stroke="#047857" stroke-width="2"/><circle cx="68" cy="52" r="3" fill="#FDE047"/></svg>`,
+    bus:`<svg viewBox="0 0 100 100" class="w-24 h-24"><rect x="10" y="25" width="80" height="50" fill="#FBBF24" stroke="#B45309" stroke-width="3" rx="6"/><rect x="15" y="30" width="20" height="18" fill="#BAE6FD" stroke="#0284C7" stroke-width="2"/><rect x="40" y="30" width="20" height="18" fill="#BAE6FD" stroke="#0284C7" stroke-width="2"/><rect x="65" y="30" width="20" height="18" fill="#BAE6FD" stroke="#0284C7" stroke-width="2"/><circle cx="25" cy="80" r="8" fill="#1E293B"/><circle cx="75" cy="80" r="8" fill="#1E293B"/><circle cx="25" cy="80" r="3" fill="#FFFFFF"/><circle cx="75" cy="80" r="3" fill="#FFFFFF"/></svg>`,
+    book:`<svg viewBox="0 0 100 100" class="w-24 h-24"><path d="M10 25 Q30 20 50 30 Q70 20 90 25 L90 80 Q70 75 50 85 Q30 75 10 80 Z" fill="#34D399" stroke="#047857" stroke-width="3"/><line x1="50" y1="30" x2="50" y2="85" stroke="#047857" stroke-width="2"/></svg>`
+  };
+  return icons[name]||icons.sun;
+}
+
+/* ============================================================
+   شريط المراحل
+   ============================================================ */
+function stageBar(){
+  const stage=currentStage+1;
+  return `
+    <div class="flex items-center justify-between gap-2 mb-4 bg-white rounded-2xl p-2 border-2 border-slate-200 shadow-sm">
+      <button onclick="openMap()" class="btn-tactile bg-slate-100 hover:bg-slate-200 text-slate-700 font-black px-3 py-2 rounded-xl border-2 border-slate-300 text-sm">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+      </button>
+      <div class="progress-rail flex-1">
+        ${[1,2,3,4,5].map(n=>`<div class="progress-dot ${n<stage?'done':n===stage?'active':''}">${n<stage?'':n}</div>`).join('')}
+      </div>
+      <div class="text-xs font-bold text-slate-500 px-2 hidden sm:block">${STAGE_NAMES[stage-1]||''}</div>
+    </div>
+  `;
+}
+
+function goStage(){
+  if(currentStage===0) return stageTrace();
+  if(currentStage===1) return stageCover();
+  if(currentStage===2) return stageConnect();
+  if(currentStage===3) return stageFind();
+  if(currentStage===4) return stageName();
+  if(currentStage===5) return stageComplete();
+}
+
+function nextStage(){
+  currentStage++;
+  const k=currentShape;
+  if(currentStage > state.shapeProgress[k]){
+    state.shapeProgress[k] = Math.min(5,currentStage);
+    if(state.shapeProgress[k]>=5){
+      const idx=KEYS.indexOf(k);
+      if(idx>=0 && idx<KEYS.length-1) state.unlocked[KEYS[idx+1]]=true;
+    }
+    saveState(); updateTopProgress();
+  }
+  goStage();
+}
+
+/* ============================================================
+   المرحلة 1: تتبع
+   ============================================================ */
+function stageTrace(){
+  const s=SHAPES[currentShape];
+  speak(`الْمَرْحَلَةُ الْأُولَى: مَرِّرِي إِصْبَعَكِ عَلَى ${s.spoken}.`);
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-4">
+      ${stageBar()}
+      <div class="bg-white rounded-3xl p-5 border-2 border-sky-200 shadow-md text-center">
+        <span class="inline-block bg-sky-100 text-sky-800 font-black px-3 py-1 rounded-xl text-sm mb-2">المرحلة 1 من 5</span>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900">1 — المس ${s.name} بإصبعك</h2>
+        <p class="text-base font-bold text-slate-600 mt-1">مرّر إصبعك على المسار حتى يمتلئ</p>
+      </div>
+      <div class="bg-white rounded-3xl p-4 border-2 border-amber-200 shadow-md flex items-center justify-center">
+        <svg viewBox="0 0 200 200" class="trace-svg" id="trace-svg">
+          <defs>
+            <linearGradient id="traceGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0EA5E9"/>
+              <stop offset="50%" stop-color="#8B5CF6"/>
+              <stop offset="100%" stop-color="#10B981"/>
+            </linearGradient>
+          </defs>
+          <path class="trace-path" d="${s.tracePath}"/>
+          <path class="trace-progress" id="trace-progress" d="${s.tracePath}"/>
+          <circle id="trace-start" cx="${startPoint(s).x}" cy="${startPoint(s).y}" r="14" fill="#F59E0B" class="pulse-glow"/>
+        </svg>
+      </div>
+      <div class="text-center"><button onclick="skipTrace()" class="text-slate-500 font-bold text-xs underline hover:text-slate-700">تخطي (للمعلم)</button></div>
+    </div>
+  `;
+  setupTrace();
+}
+function startPoint(s){
+  if(s.key==='circle') return {x:100,y:20};
+  if(s.key==='square') return {x:30,y:30};
+  if(s.key==='triangle') return {x:100,y:25};
+  return {x:20,y:55};
+}
+function setupTrace(){
+  const svg=document.getElementById('trace-svg');
+  const path=svg.querySelector('.trace-path');
+  const prog=document.getElementById('trace-progress');
+  const totalLen=path.getTotalLength();
+  prog.style.strokeDasharray=totalLen; prog.style.strokeDashoffset=totalLen;
+  let tracing=false,maxP=0,done=false;
+  const start=document.getElementById('trace-start');
+  function getPoint(e){
+    const rect=svg.getBoundingClientRect();
+    const cx=(e.touches?e.touches[0].clientX:e.clientX);
+    const cy=(e.touches?e.touches[0].clientY:e.clientY);
+    return {x:(cx-rect.left)/rect.width*200,y:(cy-rect.top)/rect.height*200};
+  }
+  function nearest(p){
+    let best=0,bestD=Infinity;
+    for(let i=0;i<=100;i++){ const pt=path.getPointAtLength(totalLen*i/100); const d=Math.hypot(p.x-pt.x,p.y-pt.y); if(d<bestD){bestD=d;best=i/100;} }
+    return {progress:best,dist:bestD};
+  }
+  function onMove(e){
+    if(!tracing||done) return; e.preventDefault();
+    const p=getPoint(e); const {progress,dist}=nearest(p);
+    if(dist<42 && progress>maxP){
+      maxP=progress;
+      prog.style.strokeDashoffset=totalLen*(1-maxP);
+      if(maxP>0.05) start.style.opacity=0;
+      if(maxP>0.95){
+        done=true; tracing=false; successSound();
+        feedback(true,`أَحْسَنْتِ! رَسَمْتِ ${SHAPES[currentShape].spoken}`);
+        setTimeout(()=>{ speak(SHAPES[currentShape].spokenDesc,false); setTimeout(nextStage,1800); },700);
+      }
+    }
+  }
+  function onStart(e){tracing=true;onMove(e);}
+  function onEnd(){tracing=false;}
+  svg.addEventListener('pointerdown',onStart);
+  svg.addEventListener('pointermove',onMove);
+  svg.addEventListener('pointerup',onEnd);
+  svg.addEventListener('pointerleave',onEnd);
+  svg.addEventListener('touchstart',onStart,{passive:false});
+  svg.addEventListener('touchmove',onMove,{passive:false});
+  svg.addEventListener('touchend',onEnd);
+}
+function skipTrace(){ document.getElementById('trace-progress').style.strokeDashoffset=0; successSound(); setTimeout(nextStage,500); }
+
+/* ============================================================
+   المرحلة 2: غطِّ
+   ============================================================ */
+function stageCover(){
+  const s=SHAPES[currentShape];
+  speak(`الْمَرْحَلَةُ الثَّانِيَة: اِضْغَطِي عَلَى النِّقَاطِ لِتُغَطِّيَ ${s.spoken}.`);
+  const dots=generateDots(s.key);
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-4">
+      ${stageBar()}
+      <div class="bg-white rounded-3xl p-5 border-2 border-emerald-200 shadow-md text-center">
+        <span class="inline-block bg-emerald-100 text-emerald-800 font-black px-3 py-1 rounded-xl text-sm mb-2">المرحلة 2 من 5</span>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900">2 — غطِّ ${s.name}</h2>
+        <p class="text-base font-bold text-slate-600 mt-1">اضغط على كل نقطة حتى يكتمل الشكل</p>
+      </div>
+      <div class="bg-white rounded-3xl p-4 border-2 border-emerald-200 shadow-md flex items-center justify-center">
+        <svg viewBox="0 0 200 200" width="100%" style="max-width:400px;height:auto;display:block">
+          <g opacity="0.3">${s.svgFull()}</g>
+          ${dots.map((d,i)=>`<circle class="cover-dot" data-i="${i}" cx="${d.x}" cy="${d.y}" r="14" fill="${s.color}" stroke="${s.stroke}" stroke-width="3" tabindex="0" role="button" aria-label="نقطة ${i+1}"/>`).join('')}
+        </svg>
+      </div>
+      <div class="text-center"><button onclick="skipCover()" class="text-slate-500 font-bold text-xs underline hover:text-slate-700">تخطي (للمعلم)</button></div>
+    </div>
+  `;
+  let covered=0;
+  document.querySelectorAll('.cover-dot').forEach(dot=>{
+    const handler=()=>{
+      if(dot.classList.contains('covered')) return;
+      dot.classList.add('covered'); clickSound(); covered++;
+      if(covered>=dots.length){
+        setTimeout(()=>{ feedback(true,`مُمْتَاز! غَطَّيْتِ ${SHAPES[currentShape].spoken} كَامِلاً`); setTimeout(nextStage,1700); },250);
+      }
+    };
+    dot.addEventListener('click',handler);
+    dot.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();handler();}});
+  });
+}
+function generateDots(key){
+  const dots=[];
+  if(key==='circle'){for(let i=0;i<12;i++){const a=i*Math.PI/6;dots.push({x:100+70*Math.cos(a),y:100+70*Math.sin(a)});}}
+  else if(key==='square'){for(let i=0;i<12;i++){const t=i/12*4;const side=Math.floor(t),p=t-side;const pts=[[40,40],[160,40],[160,160],[40,160]];const nxt=[[160,40],[160,160],[40,160],[40,40]];dots.push({x:pts[side][0]+(nxt[side][0]-pts[side][0])*p,y:pts[side][1]+(nxt[side][1]-pts[side][1])*p});}}
+  else if(key==='triangle'){for(let i=0;i<9;i++){const t=i/9*3;const side=Math.floor(t),p=t-side;const pts=[[100,35],[165,155],[35,155]];const nxt=[[165,155],[35,155],[100,35]];dots.push({x:pts[side][0]+(nxt[side][0]-pts[side][0])*p,y:pts[side][1]+(nxt[side][1]-pts[side][1])*p});}}
+  else{for(let i=0;i<12;i++){const t=i/12*4;const side=Math.floor(t),p=t-side;const pts=[[30,65],[170,65],[170,135],[30,135]];const nxt=[[170,65],[170,135],[30,135],[30,65]];dots.push({x:pts[side][0]+(nxt[side][0]-pts[side][0])*p,y:pts[side][1]+(nxt[side][1]-pts[side][1])*p});}}
+  return dots;
+}
+function skipCover(){ document.querySelectorAll('.cover-dot').forEach(d=>d.classList.add('covered')); successSound(); setTimeout(nextStage,500); }
+
+/* ============================================================
+   المرحلة 3: وصل الشكل بظله
+   ============================================================ */
+function stageConnect(){
+  const s=SHAPES[currentShape];
+  speak(`الْمَرْحَلَةُ الثَّالِثَة: صِلِي الشَّكْلَ بِظِلِّهِ. اِضْغَطِي عَلَى الشَّكْلِ ثُمَّ عَلَى ظِلِّهِ.`);
+
+  const others = KEYS.filter(k=>k!==currentShape);
+  const pairs = [currentShape, ...shuffle(others).slice(0,2)];
+  const topOrder = shuffle(pairs);
+  const bottomOrder = shuffle(pairs);
+
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-4">
+      ${stageBar()}
+      <div class="bg-white rounded-3xl p-5 border-2 border-indigo-200 shadow-md text-center">
+        <span class="inline-block bg-indigo-100 text-indigo-800 font-black px-3 py-1 rounded-xl text-sm mb-2">المرحلة 3 من 5</span>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900">3 — وصل الشكل بظله</h2>
+        <p class="text-base font-bold text-slate-600 mt-1">اضغط على الشكل، ثم على ظله المناسب</p>
+        <div class="mt-3 inline-flex items-center gap-2 bg-yellow-50 border-2 border-yellow-200 rounded-xl px-3 py-1.5">
+          <svg viewBox="0 0 24 24" class="icon text-lg" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="text-sm font-black text-yellow-800">مهم: وصلي ${s.name} أولاً!</span>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-4 border-2 border-indigo-200 shadow-md">
+        <div class="grid grid-cols-3 gap-3">
+          ${topOrder.map(k=>{
+            const sh=SHAPES[k];
+            const isTarget = k===currentShape;
+            return `<div class="connect-item bg-slate-50 rounded-2xl p-3 border-2 ${isTarget?'border-yellow-400 border-4':'border-slate-200'} flex items-center justify-center aspect-square" data-side="top" data-k="${k}" tabindex="0" role="button" aria-label="شكل ${sh.name}">
+              <div class="w-16 h-16 md:w-20 md:h-20">${sh.svgFull()}</div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div class="grid grid-cols-3 gap-3 mt-3">
+          ${bottomOrder.map(k=>{
+            const sh=SHAPES[k];
+            return `<div class="connect-item bg-slate-100 rounded-2xl p-3 border-2 border-dashed border-slate-300 flex items-center justify-center aspect-square" data-side="bottom" data-k="${k}" tabindex="0" role="button" aria-label="ظل ${sh.name}">
+              <div class="w-16 h-16 md:w-20 md:h-20" style="filter:brightness(0.25) saturate(0);">${sh.svgFull()}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+      <div class="text-center"><button onclick="skipConnect()" class="text-slate-500 font-bold text-xs underline hover:text-slate-700">تخطي (للمعلم)</button></div>
+    </div>
+  `;
+  setupConnect();
+}
+
+function setupConnect(){
+  let selected = null;
+  let matched = 0;
+  let targetMatched = false;
+  const items = document.querySelectorAll('.connect-item');
+
+  items.forEach(el=>{
+    const handler = ()=>{
+      if(el.classList.contains('matched')) return;
+      clickSound();
+
+      if(!selected){
+        selected = el;
+        el.classList.add('selected');
+        return;
+      }
+      if(selected === el){
+        selected.classList.remove('selected');
+        selected = null;
+        return;
+      }
+
+      const isPair = selected.dataset.k === el.dataset.k && selected.dataset.side !== el.dataset.side;
+      const pairKey = el.dataset.k;
+
+      if(isPair){
+        const isCurrentShape = pairKey === currentShape;
+        selected.classList.remove('selected');
+        selected.classList.add('matched');
+        el.classList.add('matched');
+        selected = null;
+        matched++;
+
+        if(isCurrentShape && !targetMatched){
+          targetMatched = true;
+          showSuccessCheck();
+          successSound();
+          speak(`أَحْسَنْتِ! هَذَا هُوَ ${SHAPES[currentShape].spoken}!`, false);
+          feedback(true, `مُمْتَاز! وَصَلْتِ ${SHAPES[currentShape].spoken} بِنَجَاح`);
+        }else{
+          successSound();
+          speak(`أَحْسَنْتِ! هَذَا ${SHAPES[pairKey].spoken}`, false);
+          feedback(true, `أَحْسَنْتِ! هَذَا ${SHAPES[pairKey].spoken}`);
+        }
+
+        if(matched >= 3 && targetMatched){
+          setTimeout(()=>{ feedback(true,`رَائِع! وَصَلْتِ كُلَّ الْأَشْكَالِ بِظِلَالِهَا`); setTimeout(nextStage,1700); },1200);
+        }
+      }else{
+        el.classList.add('shake');
+        setTimeout(()=>el.classList.remove('shake'),500);
+        wrongSound();
+
+        if(selected.dataset.k === currentShape && !targetMatched){
+          feedback(false, ENCOURAGE[Math.floor(Math.random()*ENCOURAGE.length)]);
+        }else{
+          feedback(false, `حَاوِلِي مَرَّةً أُخْرَى`);
+        }
+
+        selected.classList.remove('selected');
+        selected = null;
+      }
+    };
+    el.addEventListener('click', handler);
+    el.addEventListener('keydown', e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();handler();}});
+  });
+}
+
+function showSuccessCheck(){
+  const overlay = document.createElement('div');
+  overlay.className = 'fixed inset-0 z-[60] flex items-center justify-center pointer-events-none';
+  overlay.innerHTML = `
+    <div class="check-mark">
+      <svg viewBox="0 0 100 100" class="w-44 h-44 md:w-64 md:h-64" style="filter: drop-shadow(0 10px 30px rgba(16,185,129,.6));">
+        <circle cx="50" cy="50" r="46" fill="#10B981" stroke="#FFFFFF" stroke-width="4"/>
+        <path d="M28 50 L44 66 L72 36" stroke="#FFFFFF" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  setTimeout(()=>{ overlay.style.transition='opacity .3s'; overlay.style.opacity='0'; setTimeout(()=>overlay.remove(),300); }, 1300);
+}
+
+function skipConnect(){
+  document.querySelectorAll('.connect-item').forEach(el=>{el.classList.add('matched'); el.classList.remove('selected');});
+  successSound(); setTimeout(nextStage,500);
+}
+
+/* ============================================================
+   المرحلة 4: اعثر عليه
+   ============================================================ */
+function stageFind(){
+  const s=SHAPES[currentShape];
+  const n=state.difficulty||3;
+  const others=KEYS.filter(k=>k!==currentShape);
+  const choices=[currentShape,...shuffle(others).slice(0,n-1)];
+  const shuffled=shuffle(choices);
+  speak(`الْمَرْحَلَةُ الرَّابِعَة: أَيْنَ ${s.spoken}؟`);
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-4">
+      ${stageBar()}
+      <div class="bg-white rounded-3xl p-5 border-2 border-purple-200 shadow-md text-center">
+        <span class="inline-block bg-purple-100 text-purple-800 font-black px-3 py-1 rounded-xl text-sm mb-2">المرحلة 4 من 5</span>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900">4 — أين ${s.name}؟</h2>
+        <p class="text-base font-bold text-slate-600 mt-1">اضغط على ${s.name}</p>
+      </div>
+      <div class="grid ${n===2?'grid-cols-2':'grid-cols-2 sm:grid-cols-3'} gap-4 max-w-2xl mx-auto">
+        ${shuffled.map(k=>{
+          const sh=SHAPES[k];
+          return `<button onclick="checkFind('${k}')" class="shape-btn btn-tactile bg-white rounded-3xl p-4 border-2 border-slate-200 hover:border-purple-300 flex flex-col items-center justify-center aspect-square shadow-md" data-k="${k}">
+            <div class="w-24 h-24 md:w-32 md:h-32">${sh.svgFull()}</div>
+            <span class="font-black text-base text-slate-800 mt-2">${sh.name}</span>
+          </button>`;
+        }).join('')}
+      </div>
+      <div class="text-center"><button onclick="skipFind()" class="text-slate-500 font-bold text-xs underline hover:text-slate-700">تخطي (للمعلم)</button></div>
+    </div>
+  `;
+}
+function checkFind(k){
+  if(k===currentShape){
+    adaptDifficulty(true); successSound();
+    feedback(true,`أَحْسَنْتِ! هَذِهِ ${SHAPES[currentShape].spoken}`);
+    setTimeout(nextStage,1600);
+  }else{
+    state.mistakes[currentShape]=(state.mistakes[currentShape]||0)+1;
+    adaptDifficulty(false); saveState();
+    const btn=document.querySelector(`[data-k="${k}"]`);
+    if(btn){btn.classList.add('shake');setTimeout(()=>btn.classList.remove('shake'),500);}
+    feedback(false,`هَذَا ${SHAPES[k].spoken}.. نَبْحَثُ عَنْ ${SHAPES[currentShape].spoken}`);
+  }
+}
+function skipFind(){ successSound(); setTimeout(nextStage,500); }
+
+/* ============================================================
+   المرحلة 5: سمِّه
+   ============================================================ */
+function stageName(){
+  const s=SHAPES[currentShape];
+  const others=KEYS.filter(k=>k!==currentShape);
+  const other=others[Math.floor(Math.random()*others.length)];
+  const options=shuffle([currentShape,other]);
+  speak(`الْمَرْحَلَةُ الْخَامِسَة: أَيُّهُمَا ${s.spoken}؟`);
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-4">
+      ${stageBar()}
+      <div class="bg-white rounded-3xl p-5 border-2 border-amber-200 shadow-md text-center">
+        <span class="inline-block bg-amber-100 text-amber-800 font-black px-3 py-1 rounded-xl text-sm mb-2">المرحلة 5 من 5</span>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900">5 — أيهما ${s.name}؟</h2>
+        <p class="text-base font-bold text-slate-600 mt-1">اضغط على ${s.name}</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 max-w-xl mx-auto">
+        ${options.map(k=>{
+          const sh=SHAPES[k];
+          return `<button onclick="checkName('${k}')" class="shape-btn btn-tactile bg-white rounded-3xl p-4 border-2 border-slate-200 hover:border-amber-300 flex flex-col items-center justify-center aspect-square shadow-md" data-k="${k}">
+            <div class="w-28 h-28 md:w-36 md:h-36">${sh.svgFull()}</div>
+          </button>`;
+        }).join('')}
+      </div>
+      <div class="text-center"><button onclick="skipName()" class="text-slate-500 font-bold text-xs underline hover:text-slate-700">تخطي (للمعلم)</button></div>
+    </div>
+  `;
+}
+function checkName(k){
+  if(k===currentShape){
+    adaptDifficulty(true); successSound();
+    feedback(true,`مُمْتَاز! هَذِهِ ${SHAPES[currentShape].spoken}`);
+    setTimeout(nextStage,1600);
+  }else{
+    state.mistakes[currentShape]=(state.mistakes[currentShape]||0)+1;
+    adaptDifficulty(false); saveState();
+    const btn=document.querySelector(`[data-k="${k}"]`);
+    if(btn){btn.classList.add('shake');setTimeout(()=>btn.classList.remove('shake'),500);}
+    feedback(false,`هَذَا ${SHAPES[k].spoken}.. نَبْحَثُ عَنْ ${SHAPES[currentShape].spoken}`);
+  }
+}
+function skipName(){ successSound(); setTimeout(nextStage,500); }
+
+/* ============================================================
+   إكمال
+   ============================================================ */
+function stageComplete(){
+  const s=SHAPES[currentShape];
+  addStar(1); successSound(); confetti();
+  speak(`مُبَارَك! أَتْقَنْتِ ${s.spoken}!`, false);
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-5 text-center">
+      <div class="bg-white rounded-3xl p-8 border-2 border-amber-300 shadow-xl">
+        <div class="text-6xl mb-3 flex justify-center">
+          <svg viewBox="0 0 24 24" class="icon text-6xl" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-2">أتقنتِ ${s.name}!</h2>
+        <div class="flex justify-center gap-2 my-4">${[1,2,3,4,5].map(()=>`<svg viewBox="0 0 24 24" class="icon text-3xl" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`).join('')}</div>
+        <div class="w-32 h-32 mx-auto my-3">${s.svgFull()}</div>
+        <p class="text-base font-bold text-slate-700">${s.desc}</p>
+        <p class="text-sm font-bold text-slate-500 mt-2">${s.sides} • ${s.corners}</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        <button onclick="openMap()" class="btn-tactile bg-emerald-500 hover:bg-emerald-600 text-white font-black text-lg px-6 py-3 rounded-2xl border-2 border-emerald-700 shadow-md">الخريطة</button>
+        <button onclick="showCertificate('${currentShape}')" class="btn-tactile bg-amber-500 hover:bg-amber-600 text-white font-black text-lg px-6 py-3 rounded-2xl border-2 border-amber-700 shadow-md">شهادة</button>
+        <button onclick="startShape('${currentShape}')" class="btn-tactile bg-sky-500 hover:bg-sky-600 text-white font-black text-lg px-6 py-3 rounded-2xl border-2 border-sky-700 shadow-md">مراجعة</button>
+      </div>
+    </div>
+  `;
+  currentStage=6;
+}
+
+/* ============================================================
+   الشهادة
+   ============================================================ */
+function showCertificate(k){
+  clickSound();
+  const s=SHAPES[k];
+  const name=state.childName||'بطلتنا الصغيرة';
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-4">
+      <div class="bg-white rounded-3xl p-4 border-2 border-slate-200 flex flex-col sm:flex-row items-center justify-center gap-3 shadow-md no-print">
+        <label for="name-input" class="font-black text-slate-700">اسم الطفلة:</label>
+        <input id="name-input" type="text" placeholder="اكتبي الاسم" value="${state.childName}" oninput="setChildName(this.value)" class="border-2 border-indigo-300 rounded-xl px-4 py-2 text-lg font-bold text-center focus:outline-none focus:border-indigo-500 w-full sm:w-64">
+      </div>
+      <div id="print-area" class="certificate-bg rounded-3xl p-6 md:p-10 border-4 border-amber-400 shadow-2xl text-center">
+        <div class="text-5xl md:text-6xl mb-2 flex justify-center">
+          <svg viewBox="0 0 24 24" class="icon text-5xl" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-black text-amber-700 mb-1">شهادة إتقان</h2>
+        <p class="text-base font-bold text-slate-600 mb-4">تُمنح بكل فخر إلى</p>
+        <div class="text-3xl md:text-4xl font-black text-slate-900 bg-yellow-100 inline-block px-8 py-3 rounded-2xl border-4 border-amber-300 mb-4">${name}</div>
+        <p class="text-lg md:text-xl font-bold text-slate-700 mb-3">لإتقانها شكل <strong style="color:${s.color}">${s.name}</strong> عبر 5 مراحل تعليمية</p>
+        <div class="w-24 h-24 mx-auto my-3">${s.svgFull()}</div>
+        <div class="flex justify-center gap-1 mb-3">${[1,2,3,4,5].map(()=>`<svg viewBox="0 0 24 24" class="icon text-3xl" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`).join('')}</div>
+        <div class="flex justify-center gap-3">
+          ${KEYS.map(key=>`<div class="w-8 h-8 opacity-${state.shapeProgress[key]>=5?'100':'30'}">${SHAPES[key].svg()}</div>`).join('')}
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 no-print">
+        <button onclick="window.print()" class="btn-tactile bg-indigo-500 hover:bg-indigo-600 text-white font-black text-lg px-6 py-3 rounded-2xl border-2 border-indigo-700 shadow-md">طباعة</button>
+        <button onclick="openMap()" class="btn-tactile bg-slate-200 hover:bg-slate-300 text-slate-800 font-black text-lg px-6 py-3 rounded-2xl border-2 border-slate-400">الخريطة</button>
+      </div>
+    </div>
+  `;
+}
+function setChildName(v){state.childName=v.trim();saveState();}
+
+/* ============================================================
+   وضع المعلم
+   ============================================================ */
+function openTeacher(){
+  clickSound();
+  const totalProg=KEYS.reduce((a,k)=>a+state.shapeProgress[k],0);
+  document.getElementById('app').innerHTML=`
+    <div class="fade-up space-y-4">
+      <div class="bg-white rounded-3xl p-5 border-2 border-violet-200 shadow-md flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-xl md:text-2xl font-black text-slate-900">وضع المعلم</h2>
+        <button onclick="openMap()" class="btn-tactile bg-slate-100 text-slate-800 font-black px-4 py-2 rounded-xl border-2 border-slate-300 text-sm">الرحلة</button>
+      </div>
+      <div id="print-area" class="bg-white rounded-3xl p-5 border-2 border-amber-200 shadow-md">
+        <h3 class="text-lg font-black text-slate-800 mb-3">تقرير التقدم</h3>
+        <div class="grid grid-cols-2 gap-3 mb-4">
+          <div class="bg-amber-50 rounded-2xl p-3 border-2 border-amber-200 text-center">
+            <div class="text-2xl font-black text-amber-700">${state.stars}</div>
+            <div class="text-xs font-bold text-amber-900">النجوم</div>
+          </div>
+          <div class="bg-emerald-50 rounded-2xl p-3 border-2 border-emerald-200 text-center">
+            <div class="text-2xl font-black text-emerald-700">${totalProg}/20</div>
+            <div class="text-xs font-bold text-emerald-900">مراحل مكتملة</div>
+          </div>
+        </div>
+        <table class="w-full text-right text-sm">
+          <thead><tr class="border-b-2 border-slate-200 text-xs text-slate-500"><th class="p-2">الشكل</th><th class="p-2">التقدم</th><th class="p-2">الأخطاء</th><th class="p-2">الحالة</th></tr></thead>
+          <tbody>
+            ${KEYS.map(k=>{
+              const p=state.shapeProgress[k],done=p>=5;
+              return `<tr class="border-b border-slate-100">
+                <td class="p-2 font-black text-slate-800">${SHAPES[k].name}</td>
+                <td class="p-2">${[1,2,3,4,5].map(n=>n<=p?'★':'☆').join('')}</td>
+                <td class="p-2 font-bold text-rose-600">${state.mistakes[k]||0}</td>
+                <td class="p-2 text-xs">${done?'<span class="text-emerald-700 font-black">مُتقن</span>':state.unlocked[k]?'<span class="text-sky-700 font-bold">مفتوح</span>':'<span class="text-slate-400">مقفل</span>'}</td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+        <div class="mt-4 flex flex-wrap gap-2 no-print">
+          <button onclick="window.print()" class="btn-tactile bg-sky-500 text-white font-black px-4 py-2 rounded-xl border-2 border-sky-700 text-sm">طباعة</button>
+          <button onclick="resetProgress()" class="btn-tactile bg-rose-500 text-white font-black px-4 py-2 rounded-xl border-2 border-rose-700 text-sm">إعادة ضبط</button>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-5 border-2 border-teal-200 shadow-md no-print">
+        <h3 class="text-lg font-black text-slate-800 mb-3">إعدادات</h3>
+        <div class="mb-3">
+          <span class="font-bold text-slate-700 text-sm">عدد الخيارات في "اعثر عليه":</span>
+          <div class="flex gap-2 mt-2">
+            ${[2,3,4].map(n=>`<button onclick="setDifficulty(${n})" class="btn-tactile font-black px-4 py-2 rounded-xl border-2 ${state.difficulty===n?'bg-teal-500 text-white border-teal-700':'bg-teal-50 text-teal-900 border-teal-200'}">${n}</button>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+function setDifficulty(n){state.difficulty=n;saveState();openTeacher();clickSound();}
+function resetProgress(){
+  if(!confirm('هل تريد إعادة ضبط كل التقدم؟')) return;
+  state=JSON.parse(JSON.stringify(DEFAULT_STATE));
+  saveState(); applyTheme(); updateTopProgress(); openMap();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') openMap();
+  if(e.key==='r'||e.key==='R') repeatPrompt();
+});
+
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
+
+loadState();
+</script>
+</body>
+</html>
